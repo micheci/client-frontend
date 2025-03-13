@@ -1,50 +1,29 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-white p-4">
       <div className="flex items-center justify-between">
-        <div className="text-white text-2xl">MyApp</div>
-        <div className="lg:hidden">
-          <button onClick={toggleMenu} className="text-white text-2xl">
-            &#9776;
-          </button>
+        {/* Logo */}
+        <div className="text-black text-2xl">Micheci Properties</div>
+
+        {/* Navigation Links */}
+        <div className="hidden lg:flex lg:items-center lg:space-x-8">
+          <a href="#home" className="text-black hover:text-gray-400">
+            Home
+          </a>
+          <a href="#properties" className="text-black hover:text-gray-400">
+            Properties
+          </a>
+          <a href="#contactMe" className="text-black hover:text-gray-400">
+            Contact Me
+          </a>
         </div>
-        <div
-          className={`${
-            isMenuOpen ? "block" : "hidden"
-          } lg:flex lg:items-center lg:space-x-8`}
-        >
-          <ul className="flex flex-col lg:flex-row lg:space-x-8">
-            <li>
-              <a href="#home" className="text-white hover:text-gray-400">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="text-white hover:text-gray-400">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="text-white hover:text-gray-400">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="text-white hover:text-gray-400">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
+
+        {/* Use Client Button */}
+        <button className="text-black bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+          Use Client
+        </button>
       </div>
     </nav>
   );

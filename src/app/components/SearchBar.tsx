@@ -15,7 +15,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative z-10 mx-auto w-full max-w-3xl -mt-10 bg-white p-4 shadow-lg rounded-lg flex items-center">
+    <div className="absolute left-1/2 top-[85%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-3xl bg-white p-4 shadow-lg rounded-lg flex items-center">
       <input
         type="text"
         placeholder="Search by address, city, or ZIP code..."

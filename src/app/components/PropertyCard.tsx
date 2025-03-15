@@ -19,7 +19,7 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
         height={200}
         className="w-full h-48 object-cover"
       />
-      <div className="p-4 bg-blue-500">
+      <div className="p-4 bg-orange-500">
         <h3 className="text-lg font-semibold">{property.title}</h3>
         <p className="text-gray-600">{property.location}</p>
         <p className="text-gray-900 font-bold mt-2">${property.price}</p>

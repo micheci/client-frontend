@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white p-4">
+    <nav className="bg-blue-500 p-4">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="text-black text-2xl">Micheci Properties</div>
@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
 
         {/* Use Client Button */}
-        <button className="text-black bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+        <button className="text-black bg-orange-500 px-4 py-2 rounded-lg hover:bg-blue-600">
           Use Client
         </button>
       </div>

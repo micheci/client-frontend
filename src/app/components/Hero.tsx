@@ -1,35 +1,33 @@
 import React from "react";
 import Image from "next/image";
 
-const Hero = ({}) => {
+const Hero = () => {
   return (
-    <div className="flex items-center justify-between w-full max-w-6xl mx-auto p-12">
+    <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-6xl mx-auto p-6 sm:p-12 mb-2">
       {/* Left Column - Intro Text */}
-      <div className="w-1/3 text-left">
-        <h1 className="text-4xl font-bold leading-snug">
+      <div className="w-full sm:w-1/3 text-center sm:text-left">
+        <h1 className="text-3xl sm:text-4xl font-bold leading-snug">
           {`Hi, I'm Micheci—your go-to Dallas real estate expert! Let's find your dream home today!`}
         </h1>
       </div>
 
       {/* Middle Column - Larger Image */}
-      <div className="w-1/3 flex justify-center">
+      <div className="w-full sm:w-1/3 flex justify-center my-6 sm:my-0">
         <Image
           src="https://saint313.com/wp-content/uploads/2018/04/pexels-photo-428341-1024x683.jpeg"
           alt="Micheci"
-          width={240} // Define exact width
-          height={240} // Define exact height
+          width={240}
+          height={240}
           className="object-cover rounded-full shadow-lg"
         />
       </div>
 
-      {/* Right Column - Achievements/Goals with Icons and Spacing */}
-      <div className="w-1/3 text-right space-y-4">
-        <div className="flex items-center space-x-3">
-          <h2 className="text-2xl font-semibold">🏆 Top Realtor in Dallas</h2>
-        </div>
+      {/* Right Column - Achievements/Goals */}
+      <div className="w-full sm:w-1/3 text-center sm:text-right space-y-4">
+        <h2 className="text-2xl font-semibold">🏆 Top Realtor in Dallas</h2>
 
-        <div className="flex items-center space-x-3">
-          <div className="bg-gray-200 p-2 rounded-lg">
+        <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3">
+          <div className="bg-gray-200 p-2 rounded-lg inline-block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -45,14 +43,14 @@ const Hero = ({}) => {
               />
             </svg>
           </div>
-          <p className="text-lg text-left">
+          <p className="text-lg">
             <span className="block text-2xl font-bold">100</span>
             <span className="block">Homes Sold</span>
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="bg-gray-200 p-2 rounded-lg">
+        <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3">
+          <div className="bg-gray-200 p-2 rounded-lg inline-block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -68,14 +66,14 @@ const Hero = ({}) => {
               />
             </svg>
           </div>
-          <p className="text-lg text-left">
+          <p className="text-lg">
             <span className="block text-2xl font-bold">Lowest</span>
             <span className="block">Rates</span>
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="bg-gray-200 p-2 rounded-lg">
+        <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-3">
+          <div className="bg-gray-200 p-2 rounded-lg inline-block">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -91,7 +89,7 @@ const Hero = ({}) => {
               />
             </svg>
           </div>
-          <p className="text-lg text-left">
+          <p className="text-lg">
             <span className="block text-2xl font-bold">24hr</span>
             <span className="block">Service</span>
           </p>

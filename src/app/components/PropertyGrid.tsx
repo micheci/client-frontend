@@ -55,7 +55,7 @@ const PropertyGrid = () => {
   return (
     <div className="bg-white p-6">
       {/* Centered and moved lower */}
-      <h1 className="text-center text-2xl font-bold mt-10 mb-6">
+      <h1 className="text-center text-2xl font-bold mt-10 mb-6 text-black">
         Popular properties this month
       </h1>
 

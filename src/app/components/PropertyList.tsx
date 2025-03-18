@@ -11,7 +11,7 @@ interface Property {
   image: string;
   bedrooms: string;
   bathrooms: string;
-  sqft: string;
+  sqft: number;
 }
 
 const PropertyList = ({ properties }: { properties: Property[] }) => {

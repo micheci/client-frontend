@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BedroomsBathroomsDropdown from "./BedroomBathroomDropDown";
+import PriceDropdown from "./PriceDropdown";
 
 // Define the type for the props
 interface PropertySearchBarProps {
@@ -34,6 +35,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSearch }) => {
           console.log(`Selected ${bedrooms} bedrooms, ${bathrooms} bathrooms`)
         }
       />
+      <PriceDropdown />
 
       {/* Search button */}
       <button

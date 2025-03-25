@@ -84,6 +84,7 @@ const PropertiesPage = () => {
 
   // Handle search term update from child component
   const handleSearch = (term: string) => {
+    console.log(term, "fromchild to parent page.tsx");
     setSearchTerm(term);
   };
 

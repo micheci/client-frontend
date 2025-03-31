@@ -2,17 +2,7 @@
 
 import React from "react";
 import PropertyCard from "./PropertyCard";
-
-interface Property {
-  id: number;
-  title: string;
-  location: string;
-  price: string;
-  image: string;
-  bedrooms: string;
-  bathrooms: string;
-  sqft: number;
-}
+import { Property } from "../interfaces/Iproperties";
 
 const PropertyList = ({ properties }: { properties: Property[] }) => {
   return (

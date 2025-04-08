@@ -12,6 +12,7 @@ const PropertiesPage = () => {
   const [selectedPropertyId, setSelectedPropertyId] = useState<number | null>(
     null
   );
+  const [filters, setFilters] = useState({ bedrooms: 1, bathrooms: 1 });
 
   useEffect(() => {
     properties.getProperties();
@@ -20,9 +21,11 @@ const PropertiesPage = () => {
   // Filter properties based on the search term
   const filteredProperties = propertyState.propertyData.value.filter(
     (property) =>
-      property.location.toLowerCase().includes(searchTerm.toLowerCase())
+      property.location.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      property.bedrooms === filters.bedrooms &&
+      property.bathrooms === filters.bathrooms
   );
-
+  console.log(filteredProperties, "filteredSTU");
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -35,7 +38,12 @@ const PropertiesPage = () => {
     <div className="flex flex-col h-screen">
       {/* Search Bar (Fixed at the top) */}
       <div className="w-full p-4 bg-gray-100 shadow-md">
-        <PropertySearchBar onSearch={handleSearch} />
+        <PropertySearchBar
+          onSearch={handleSearch}
+          onFilterChange={(bedrooms, bathrooms) =>
+            setFilters({ bedrooms, bathrooms })
+          }
+        />
       </div>
 
       {/* Content Area */}

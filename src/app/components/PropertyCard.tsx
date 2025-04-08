@@ -7,8 +7,8 @@ interface Property {
   location: string;
   price: string;
   image: string;
-  bedrooms: string;
-  bathrooms: string;
+  bedrooms: number;
+  bathrooms: number;
   sqft: string;
 }
 

@@ -7,8 +7,8 @@ const properties = [
     location: "2012 Woodall Rodgers Fwy, Dallas, TX 75201",
     price: "1,200,000",
     image: "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg",
-    bedrooms: "4",
-    bathrooms: "3",
+    bedrooms: 4,
+    bathrooms: 3,
     sqft: "3500",
   },
   {
@@ -17,8 +17,8 @@ const properties = [
     location: "920 S Harwood St, Dallas, TX 75201",
     price: "950,000",
     image: "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg",
-    bedrooms: "2",
-    bathrooms: "2",
+    bedrooms: 2,
+    bathrooms: 2,
     sqft: "1800",
   },
   {
@@ -28,8 +28,8 @@ const properties = [
     price: "2,500,000",
     image:
       "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
-    bedrooms: "5",
-    bathrooms: "4",
+    bedrooms: 5,
+    bathrooms: 4,
     sqft: "4500",
   },
   {
@@ -39,8 +39,8 @@ const properties = [
     price: "600,000",
     image:
       "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
-    bedrooms: "3",
-    bathrooms: "2",
+    bedrooms: 3,
+    bathrooms: 2,
     sqft: "1800",
   },
   {
@@ -50,8 +50,8 @@ const properties = [
     price: "950,000",
     image:
       "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
-    bedrooms: "4",
-    bathrooms: "3",
+    bedrooms: 4,
+    bathrooms: 3,
     sqft: "2500",
   },
   {
@@ -61,8 +61,8 @@ const properties = [
     price: "750,000",
     image:
       "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
-    bedrooms: "3",
-    bathrooms: "2",
+    bedrooms: 3,
+    bathrooms: 2,
     sqft: "2200",
   },
 ];

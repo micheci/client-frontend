@@ -5,9 +5,13 @@ import PriceDropdown from "./PriceDropdown";
 // Define the type for the props
 interface PropertySearchBarProps {
   onSearch: (searchTerm: string) => void;
+  onFilterChange: (bedrooms: number, bathrooms: number) => void;
 }
 
-const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSearch }) => {
+const PropertySearchBar: React.FC<PropertySearchBarProps> = ({
+  onSearch,
+  onFilterChange,
+}) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,10 +35,11 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({ onSearch }) => {
 
       {/* Bedrooms Dropdown */}
       <BedroomsBathroomsDropdown
-        onSelect={(bedrooms, bathrooms) =>
-          console.log(`Selected ${bedrooms} bedrooms, ${bathrooms} bathrooms`)
-        }
+        onSelect={(bedrooms, bathrooms) => {
+          onFilterChange(bedrooms, bathrooms); // <-- send to parent
+        }}
       />
+
       <PriceDropdown />
 
       {/* Search button */}

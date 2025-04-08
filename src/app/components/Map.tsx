@@ -23,9 +23,15 @@ interface MapProps {
   searchTerm: string;
   properties: Property[];
   selectedPropertyId: number | null;
+  onPropertySelect: (propertyId: number) => void;
 }
 
-const Map = ({ searchTerm, properties, selectedPropertyId }: MapProps) => {
+const Map = ({
+  searchTerm,
+  properties,
+  selectedPropertyId,
+  onPropertySelect,
+}: MapProps) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
@@ -115,6 +121,7 @@ const Map = ({ searchTerm, properties, selectedPropertyId }: MapProps) => {
           key={marker.id}
           position={marker.position}
           title={marker.title}
+          onClick={() => onPropertySelect(marker.id)}
         />
       ))}
     </GoogleMap>

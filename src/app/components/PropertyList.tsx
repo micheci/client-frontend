@@ -12,9 +12,9 @@ const PropertyList = ({ properties, onSelectProperty }: PropertyListProps) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {properties.map((property) => (
         <div
-          key={property.id}
+          key={property._id}
           className="col-span-1 cursor-pointer"
-          onClick={() => onSelectProperty(property.id)}
+          onClick={() => onSelectProperty(property._id)}
         >
           <PropertyCard property={property} />
         </div>

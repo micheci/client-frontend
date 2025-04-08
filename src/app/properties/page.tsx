@@ -5,6 +5,7 @@ import PropertyList from "../components/PropertyList";
 import PropertySearchBar from "../components/PropertySearchBar";
 import { properties } from "../store/PropertyStore";
 import { useHookstate } from "@hookstate/core";
+import PropertyDetailModal from "../modals/PropertyDetailModal";
 
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
@@ -21,9 +22,9 @@ const PropertiesPage = () => {
   // Filter properties based on the search term
   const filteredProperties = propertyState.propertyData.value.filter(
     (property) =>
-      property.location.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      property.bedrooms === filters.bedrooms &&
-      property.bathrooms === filters.bathrooms
+      property.address.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      property.bedrooms >= filters.bedrooms &&
+      property.bathrooms >= filters.bathrooms
   );
   console.log(filteredProperties, "filteredSTU");
   const handleSearch = (term: string) => {
@@ -54,6 +55,7 @@ const PropertiesPage = () => {
             searchTerm={searchTerm}
             properties={filteredProperties}
             selectedPropertyId={selectedPropertyId}
+            onPropertySelect={handleSelectProperty} //for the marker
           />
         </div>
 
@@ -67,6 +69,16 @@ const PropertiesPage = () => {
             />
           </div>
         </div>
+
+        {/* Work on this adding a modal */}
+        {selectedPropertyId && (
+          <PropertyDetailModal
+            property={
+              filteredProperties.find((p) => p.id === selectedPropertyId)!
+            }
+            onClose={() => setSelectedPropertyId(null)}
+          />
+        )}
       </div>
     </div>
   );

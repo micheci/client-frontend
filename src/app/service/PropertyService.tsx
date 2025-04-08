@@ -3,25 +3,23 @@ import { Property } from "../interfaces/Iproperties";
 const properties = [
   {
     id: 1,
-    title: "Beautiful Cozy Villa in California ",
-    location: "California, USA",
+    title: "Charming Home Near Klyde Warren Park",
+    location: "2012 Woodall Rodgers Fwy, Dallas, TX 75201",
     price: "1,200,000",
-    image:
-      "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
+    image: "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg",
     bedrooms: "4",
     bathrooms: "3",
     sqft: "3500",
   },
   {
     id: 2,
-    title: "Cozy Apartment in New York",
-    location: "New York, USA",
-    price: "800,000",
-    image:
-      "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg?cs=srgb&dl=architecture-bungalow-chimney-1569003.jpg&fm=jpg",
+    title: "Modern Condo by Dallas Farmers Market",
+    location: "920 S Harwood St, Dallas, TX 75201",
+    price: "950,000",
+    image: "https://images.pexels.com/photos/1569003/pexels-photo-1569003.jpeg",
     bedrooms: "2",
-    bathrooms: "1",
-    sqft: "1200",
+    bathrooms: "2",
+    sqft: "1800",
   },
   {
     id: 3,

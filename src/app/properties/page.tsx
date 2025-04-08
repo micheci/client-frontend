@@ -1,4 +1,3 @@
-// pages/PropertiesPage.js
 "use client";
 import { useEffect, useState } from "react";
 import Map from "../components/Map";
@@ -9,13 +8,14 @@ import { useHookstate } from "@hookstate/core";
 
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
-  console.log(propertyState.propertyData, "stateINPAGE");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedPropertyId, setSelectedPropertyId] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     properties.getProperties();
   }, []);
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   // Filter properties based on the search term
   const filteredProperties = propertyState.propertyData.value.filter(
@@ -23,10 +23,12 @@ const PropertiesPage = () => {
       property.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Handle search term update from child component
   const handleSearch = (term: string) => {
-    console.log(term, "fromchild to parent page.tsx");
     setSearchTerm(term);
+  };
+
+  const handleSelectProperty = (propertyId: number) => {
+    setSelectedPropertyId(propertyId);
   };
 
   return (
@@ -38,18 +40,23 @@ const PropertiesPage = () => {
 
       {/* Content Area */}
       <div className="flex flex-1 lg:flex-row overflow-hidden">
-        {/* Left - Map (Takes full height, but doesn't scroll) */}
+        {/* Left - Map */}
         <div className="lg:w-1/2 hidden lg:block">
-          <Map />
+          <Map
+            searchTerm={searchTerm}
+            properties={filteredProperties}
+            selectedPropertyId={selectedPropertyId}
+          />
         </div>
 
-        {/* Right - Properties List (Takes full height, only this part scrolls) */}
+        {/* Right - Properties List */}
         <div className="lg:w-1/2 flex flex-col h-full">
           <h1 className="text-2xl font-bold p-4">Properties</h1>
-
-          {/* This is the scrollable container */}
           <div className="flex-1 overflow-y-auto p-4">
-            <PropertyList properties={filteredProperties} />
+            <PropertyList
+              properties={filteredProperties}
+              onSelectProperty={handleSelectProperty}
+            />
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import PropertySearchBar from "../components/PropertySearchBar";
 import { properties } from "../store/PropertyStore";
 import { useHookstate } from "@hookstate/core";
 import PropertyDetailModal from "../modals/PropertyDetailModal";
+import { Property } from "../interfaces/Iproperties";
 
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
@@ -20,8 +21,11 @@ const PropertiesPage = () => {
   }, []);
 
   // Filter properties based on the search term
-  const filteredProperties = propertyState.propertyData.value.filter(
-    (property) =>
+  const rawProperties = JSON.parse(
+    JSON.stringify(propertyState.propertyData.get())
+  );
+  const filteredProperties = rawProperties.filter(
+    (property: Property) =>
       property.address.toLowerCase().includes(searchTerm.toLowerCase()) &&
       property.bedrooms >= filters.bedrooms &&
       property.bathrooms >= filters.bathrooms

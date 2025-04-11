@@ -1,11 +1,12 @@
 export interface Property {
-  _id: string | number;
+  _id: string;
   agentId: string;
   title: string;
   address: string;
   price: number;
   description: string;
   images: string[]; // array of image URLs
+  sqft: number;
   bedrooms: number;
   bathrooms: number;
   garage: boolean;

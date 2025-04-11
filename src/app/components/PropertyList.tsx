@@ -4,7 +4,7 @@ import { Property } from "../interfaces/Iproperties";
 
 interface PropertyListProps {
   properties: Property[];
-  onSelectProperty: (id: number) => void;
+  onSelectProperty: (id: number | string) => void;
 }
 
 const PropertyList = ({ properties, onSelectProperty }: PropertyListProps) => {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { Property } from "../interfaces/Iproperties";
 
 const containerStyle = {
   width: "100%",
@@ -12,12 +13,6 @@ const defaultCenter = {
   lat: 37.7749,
   lng: -122.4194,
 };
-
-interface Property {
-  id: number;
-  title: string;
-  location: string;
-}
 
 interface MapProps {
   searchTerm: string;
@@ -84,11 +79,11 @@ const Map = ({
       }[] = [];
 
       properties.forEach((property) => {
-        geocoder.geocode({ address: property.location }, (results, status) => {
+        geocoder.geocode({ address: property.address }, (results, status) => {
           if (status === "OK" && results && results.length > 0) {
             const location = results[0].geometry.location;
             newMarkers.push({
-              id: property.id,
+              id: parseInt(property._id),
               position: {
                 lat: location.lat(),
                 lng: location.lng(),

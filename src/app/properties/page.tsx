@@ -11,9 +11,7 @@ import { Property } from "../interfaces/Iproperties";
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPropertyId, setSelectedPropertyId] = useState<number | null>(
-    null
-  );
+  const [selectedPropertyId, setSelectedPropertyId] = useState<string>("");
   const [filters, setFilters] = useState({ bedrooms: 1, bathrooms: 1 });
 
   useEffect(() => {
@@ -35,7 +33,7 @@ const PropertiesPage = () => {
     setSearchTerm(term);
   };
 
-  const handleSelectProperty = (propertyId: number) => {
+  const handleSelectProperty = (propertyId: string) => {
     setSelectedPropertyId(propertyId);
   };
 

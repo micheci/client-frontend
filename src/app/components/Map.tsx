@@ -17,8 +17,8 @@ const defaultCenter = {
 interface MapProps {
   searchTerm: string;
   properties: Property[];
-  selectedPropertyId: number | null;
-  onPropertySelect: (propertyId: number) => void;
+  selectedPropertyId: string | null;
+  onPropertySelect: (propertyId: string) => void;
 }
 
 const Map = ({
@@ -45,7 +45,7 @@ const Map = ({
   // Center the map when a property is selected
   useEffect(() => {
     if (selectedPropertyId && map) {
-      const marker = markers.find((m) => m.id === selectedPropertyId);
+      const marker = markers.find((m) => m.id === parseInt(selectedPropertyId));
       if (marker) {
         map.panTo(marker.position);
         map.setZoom(15); // Optional: zoom in on selected property
@@ -116,7 +116,7 @@ const Map = ({
           key={marker.id}
           position={marker.position}
           title={marker.title}
-          onClick={() => onPropertySelect(marker.id)}
+          onClick={() => onPropertySelect(marker.id.toString())}
         />
       ))}
     </GoogleMap>

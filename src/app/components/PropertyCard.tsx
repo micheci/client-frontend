@@ -6,7 +6,10 @@ const PropertyCard: React.FC<{ property: Property }> = ({ property }) => {
   return (
     <div className="border rounded-xl shadow-lg overflow-hidden">
       <Image
-        src={property.images[0]}
+        src={
+          "https://res.cloudinary.com/dvuqgmyxv/image/upload/v1741294302/logl2synlnphkampsf9l.jpg"
+        }
+        //src={property.images[0]}
         alt={property.title}
         width={300}
         height={200}

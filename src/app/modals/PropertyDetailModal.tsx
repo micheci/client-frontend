@@ -30,7 +30,7 @@ const PropertyDetailModal = ({
           <h2 className="text-2xl text-center font-bold mb-2 text-black">
             {property.title}
           </h2>
-          <p className="text-gray-700 mb-2">{property.location}</p>
+          <p className="text-gray-700 mb-2">{property.address}</p>
           <p className="mb-1">Bedrooms: {property.bedrooms}</p>
           <p className="mb-4">Bathrooms: {property.bathrooms}</p>
 

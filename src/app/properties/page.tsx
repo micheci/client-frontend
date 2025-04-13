@@ -11,7 +11,9 @@ import { Property } from "../interfaces/Iproperties";
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPropertyId, setSelectedPropertyId] = useState<string>("");
+  const [selectedPropertyId, setSelectedPropertyId] = useState<string | null>(
+    null
+  );
   const [filters, setFilters] = useState({ bedrooms: 1, bathrooms: 1 });
 
   useEffect(() => {
@@ -76,7 +78,9 @@ const PropertiesPage = () => {
         {selectedPropertyId && (
           <PropertyDetailModal
             property={
-              filteredProperties.find((p) => p.id === selectedPropertyId)!
+              filteredProperties.find(
+                (p: { id: string }) => p.id === selectedPropertyId
+              )!
             }
             onClose={() => setSelectedPropertyId(null)}
           />

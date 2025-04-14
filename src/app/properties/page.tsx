@@ -79,7 +79,7 @@ const PropertiesPage = () => {
           <PropertyDetailModal
             property={
               filteredProperties.find(
-                (p: { id: string }) => p.id === selectedPropertyId
+                (p: Property) => p._id === selectedPropertyId
               )!
             }
             onClose={() => setSelectedPropertyId(null)}

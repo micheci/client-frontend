@@ -1,6 +1,29 @@
 import { Property } from "../interfaces/Iproperties";
 import axios from "axios";
 
+const API_URL = "http://localhost:5000/api/property"; // Change to your actual backend URL
+
+const PropertyService = {
+  getProperties: async (): Promise<Property[]> => {
+    try {
+      console.log("Before calling api ");
+
+      const response = await axios.get<{ data: Property[] }>(API_URL, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTE0ZTYwNTFmNGZjMjFmODNhMWI4OCIsImlhdCI6MTc0NDU3MzQyOCwiZXhwIjoxNzQ3MTY1NDI4fQ.ksv7zknOFxgsqtcXtwMFuaEtdoHfQl_xeGkB9MQyd4o",
+        },
+      });
+      console.log(response.data, "response from backend");
+      return response.data.data;
+    } catch (error) {
+      console.error("Failed to fetch properties:", error);
+      return [];
+    }
+  },
+};
+
+export default PropertyService;
 // const properties = [
 //   {
 //     _id: "67c8bedcfabb0edd376edef1",
@@ -295,31 +318,3 @@ import axios from "axios";
 //     walkInClosets: true,
 //   },
 // ];
-const API_URL = "http://localhost:5000/api/property"; // Change to your actual backend URL
-
-const PropertyService = {
-  // getMockProperties: async (): Promise<Property[]> => {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => resolve(properties), 500); // Simulate API delay
-  //   });
-  // },
-  getProperties: async (): Promise<Property[]> => {
-    try {
-      console.log("Before calling api ");
-
-      const response = await axios.get<Property[]>(API_URL, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTE0ZTYwNTFmNGZjMjFmODNhMWI4OCIsImlhdCI6MTc0NDU3MzQyOCwiZXhwIjoxNzQ3MTY1NDI4fQ.ksv7zknOFxgsqtcXtwMFuaEtdoHfQl_xeGkB9MQyd4o",
-        },
-      });
-      console.log(response.data, "response from backend");
-      return response.data;
-    } catch (error) {
-      console.error("Failed to fetch properties:", error);
-      return [];
-    }
-  },
-};
-
-export default PropertyService;

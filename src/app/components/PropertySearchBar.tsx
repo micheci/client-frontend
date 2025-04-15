@@ -28,7 +28,7 @@ const PropertySearchBar: React.FC<PropertySearchBarProps> = ({
       <input
         type="text"
         placeholder="Search by city..."
-        className="w-full sm:w-3/4 p-2 border border-gray-300 rounded-lg"
+        className="w-full sm:w-3/4 p-2 border border-gray-300 rounded-lg text-black"
         value={inputValue}
         onChange={handleChange}
       />

@@ -1,19 +1,21 @@
+"use client";
 import React, { useEffect } from "react";
 import PropertyCard from "./PropertyCard";
 import { useHookstate } from "@hookstate/core";
 import { properties } from "../store/PropertyStore";
-import { Property } from "../interfaces/Iproperties";
 
 const PropertyGrid = () => {
-  const state = useHookstate(properties.propertiesState);
-  const featuredProps = (structuredClone(
-    state.featuredPropertiesData.get({ noproxy: true })
-  ) ?? []) as Property[];
+  const featuredState = useHookstate(properties.propertiesState);
 
   useEffect(() => {
     properties.getFeaturedProperties("john-doe");
   }, []);
 
+  const rawProperties = JSON.parse(
+    JSON.stringify(featuredState.featuredPropertiesData.get())
+  );
+
+  const featuredProps = rawProperties?.properties ?? [];
   const count = featuredProps.length;
 
   return (

@@ -25,7 +25,7 @@ const PropertyService = {
     try {
       console.log("Before calling Featured api ");
 
-      const response = await axios.get<{ data: Property[] }>(
+      const response = await axios.get<Property[]>(
         `http://localhost:5000/api/property/agent/featured/${agent_slug}`,
         {
           headers: {
@@ -35,7 +35,7 @@ const PropertyService = {
         }
       );
       console.log(response.data, "response from backend");
-      return response.data.data;
+      return response.data;
     } catch (error) {
       console.error("Failed to fetch properties:", error);
       return [];

@@ -17,7 +17,17 @@ async function getProperties() {
   propertiesState.propertyData.set(response);
 }
 
+async function getFeaturedProperties() {
+  //const response = await fetch('/backend');
+  //const propertiesData=response.json();
+  //propertiesState.propertiesData.set(data)
+  const response: Property[] = await PropertyService.getFeaturedProperties();
+  console.log(response, "FROMTHE SERVICE/API");
+  propertiesState.propertyData.set(response);
+}
+
 export const properties = {
   propertiesState,
   getProperties,
+  getFeaturedProperties,
 };

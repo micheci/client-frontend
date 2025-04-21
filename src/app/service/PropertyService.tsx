@@ -21,6 +21,23 @@ const PropertyService = {
       return [];
     }
   },
+  getFeaturedProperties: async (): Promise<Property[]> => {
+    try {
+      console.log("Before calling api ");
+
+      const response = await axios.get<{ data: Property[] }>(API_URL, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTE0ZTYwNTFmNGZjMjFmODNhMWI4OCIsImlhdCI6MTc0NDU3MzQyOCwiZXhwIjoxNzQ3MTY1NDI4fQ.ksv7zknOFxgsqtcXtwMFuaEtdoHfQl_xeGkB9MQyd4o",
+        },
+      });
+      console.log(response.data, "response from backend");
+      return response.data.data;
+    } catch (error) {
+      console.error("Failed to fetch properties:", error);
+      return [];
+    }
+  },
 };
 
 export default PropertyService;

@@ -21,16 +21,19 @@ const PropertyService = {
       return [];
     }
   },
-  getFeaturedProperties: async (): Promise<Property[]> => {
+  getFeaturedProperties: async (agent_slug: string): Promise<Property[]> => {
     try {
-      console.log("Before calling api ");
+      console.log("Before calling Featured api ");
 
-      const response = await axios.get<{ data: Property[] }>(API_URL, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTE0ZTYwNTFmNGZjMjFmODNhMWI4OCIsImlhdCI6MTc0NDU3MzQyOCwiZXhwIjoxNzQ3MTY1NDI4fQ.ksv7zknOFxgsqtcXtwMFuaEtdoHfQl_xeGkB9MQyd4o",
-        },
-      });
+      const response = await axios.get<{ data: Property[] }>(
+        `http://localhost:5000/api/property/agent/featured/${agent_slug}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTE0ZTYwNTFmNGZjMjFmODNhMWI4OCIsImlhdCI6MTc0NDU3MzQyOCwiZXhwIjoxNzQ3MTY1NDI4fQ.ksv7zknOFxgsqtcXtwMFuaEtdoHfQl_xeGkB9MQyd4o",
+          },
+        }
+      );
       console.log(response.data, "response from backend");
       return response.data.data;
     } catch (error) {

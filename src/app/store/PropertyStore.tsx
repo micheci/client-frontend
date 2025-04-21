@@ -2,8 +2,12 @@ import { hookstate } from "@hookstate/core";
 import PropertyService from "../service/PropertyService";
 import { Property } from "../interfaces/Iproperties";
 
-const propertiesState = hookstate<{ propertyData: Property[] }>({
+const propertiesState = hookstate<{
+  propertyData: Property[];
+  featuredPropertiesData: Property[];
+}>({
   propertyData: [],
+  featuredPropertiesData: [],
 });
 
 //function to get all properties
@@ -17,13 +21,15 @@ async function getProperties() {
   propertiesState.propertyData.set(response);
 }
 
-async function getFeaturedProperties() {
+async function getFeaturedProperties(agent_slug: string) {
   //const response = await fetch('/backend');
   //const propertiesData=response.json();
   //propertiesState.propertiesData.set(data)
-  const response: Property[] = await PropertyService.getFeaturedProperties();
+  const response: Property[] = await PropertyService.getFeaturedProperties(
+    agent_slug
+  );
   console.log(response, "FROMTHE SERVICE/API");
-  propertiesState.propertyData.set(response);
+  propertiesState.featuredPropertiesData.set(response);
 }
 
 export const properties = {

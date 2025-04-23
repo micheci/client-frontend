@@ -13,18 +13,12 @@ const propertiesState = hookstate<{
 //function to get all properties
 //will call api and set it to propertyData
 async function getProperties() {
-  //const response = await fetch('/backend');
-  //const propertiesData=response.json();
-  //propertiesState.propertiesData.set(data)
   const response: Property[] = await PropertyService.getProperties();
   console.log(response, "FROMTHE SERVICE/API");
   propertiesState.propertyData.set(response);
 }
 
 async function getFeaturedProperties(agent_slug: string) {
-  //const response = await fetch('/backend');
-  //const propertiesData=response.json();
-  //propertiesState.propertiesData.set(data)
   const response: Property[] = await PropertyService.getFeaturedProperties(
     agent_slug
   );

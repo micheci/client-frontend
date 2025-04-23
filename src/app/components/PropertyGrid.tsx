@@ -5,7 +5,11 @@ import { useHookstate } from "@hookstate/core";
 import { properties } from "../store/PropertyStore";
 import { Property } from "../interfaces/Iproperties";
 
-const PropertyGrid = () => {
+const PropertyGrid = ({
+  onSelectProperty,
+}: {
+  onSelectProperty: (property: Property) => void;
+}) => {
   // const properties = [
   //   {
   //     id: 1,
@@ -72,15 +76,19 @@ const PropertyGrid = () => {
   console.log(featuredProperties, "raws");
   return (
     <div className="bg-white p-6">
-      {/* Centered and moved lower */}
       <h1 className="text-center text-2xl font-bold mt-10 mb-6 text-black">
         Popular properties this month
       </h1>
 
-      {/* Grid layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {featuredProperties.map((property: Property) => (
-          <PropertyCard key={property._id} property={property} />
+          <div
+            key={property._id}
+            onClick={() => onSelectProperty(property)}
+            className="cursor-pointer"
+          >
+            <PropertyCard property={property} />
+          </div>
         ))}
       </div>
     </div>

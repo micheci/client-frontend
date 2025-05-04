@@ -65,12 +65,19 @@ const PropertiesPage = () => {
 
         {/* Right - Properties List */}
         <div className="lg:w-1/2 flex flex-col h-full">
-          <h1 className="text-2xl font-bold p-4">Properties</h1>
-          <div className="flex-1 overflow-y-auto p-4">
-            <PropertyList
-              properties={filteredProperties}
-              onSelectProperty={handleSelectProperty}
-            />
+          <div>
+            {" "}
+            <h1 className="text-2xl font-bold p-4">Filters</h1>
+          </div>
+          <div>
+            {" "}
+            <h1 className="text-2xl font-bold p-4">Property Listings</h1>
+            <div className="flex-1 overflow-y-auto p-4">
+              <PropertyList
+                properties={filteredProperties}
+                onSelectProperty={handleSelectProperty}
+              />
+            </div>
           </div>
         </div>
 

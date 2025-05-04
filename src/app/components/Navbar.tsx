@@ -2,25 +2,32 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="bg-blue-500 p-4">
+    <nav className="bg-white p-4 shadow-lg mb-2">
       <div className="flex items-center justify-between">
-        <div className="text-black text-2xl">Micheci Properties</div>
+        {/* Title on the left */}
+        <div className="text-black text-2xl font-semibold">RealEstate Hub</div>
 
-        <div className="hidden lg:flex lg:items-center lg:space-x-8">
-          <Link href="/" className="text-black hover:text-gray-400">
+        {/* Menu items on the right */}
+        <div className="hidden lg:flex items-center space-x-8">
+          <Link
+            href="/"
+            className="text-black hover:text-gray-500 transition-colors"
+          >
             Home
           </Link>
-          <Link href="/properties" className="text-black hover:text-gray-400">
+          <Link
+            href="/properties"
+            className="text-black hover:text-gray-500 transition-colors"
+          >
             Properties
           </Link>
-          <Link href="/#contactMe" className="text-black hover:text-gray-400">
-            Contact Me
+          <Link
+            href="/#contactMe"
+            className="text-black hover:text-gray-500 transition-colors"
+          >
+            Contact
           </Link>
         </div>
-
-        <button className="text-black bg-orange-500 px-4 py-2 rounded-lg hover:bg-blue-600">
-          Use Client
-        </button>
       </div>
     </nav>
   );

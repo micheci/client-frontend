@@ -25,15 +25,27 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <Hero />
-      <div className="relative">
-        <SearchBar />
+      <div className="bg-white min-h-screen">
+        <Navbar />
+
+        {/* Padded section only for Hero and SearchBar */}
+        <div className="px-4 sm:px-8 lg:px-12 py-6 bg-gray-700 shadow-md rounded-xl max-w-7xl mx-auto my-4">
+          <Hero />
+          <div className="relative mt-4">
+            <SearchBar />
+          </div>
+        </div>
+
+        {/* Full-width section below */}
+        <PropertyGrid onSelectProperty={handlePropertyClick} />
+
+        {isModalOpen && selectedProperty && (
+          <PropertyDetailModal
+            property={selectedProperty}
+            onClose={closeModal}
+          />
+        )}
       </div>
-      <PropertyGrid onSelectProperty={handlePropertyClick} />
-      {isModalOpen && selectedProperty && (
-        <PropertyDetailModal property={selectedProperty} onClose={closeModal} />
-      )}
     </>
   );
 }

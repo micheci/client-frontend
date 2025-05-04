@@ -76,8 +76,8 @@ const PropertyGrid = ({
   console.log(featuredProperties, "raws");
   return (
     <div className="bg-white p-6">
-      <h1 className="text-center text-2xl font-bold mt-10 mb-6 text-black">
-        Popular properties this month
+      <h1 className=" text-2xl font-bold mt-10 mb-6 text-black">
+        Featured Properties
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

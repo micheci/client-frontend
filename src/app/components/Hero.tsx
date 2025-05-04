@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-6xl mx-auto p-6 sm:p-12 mb-2">
+    <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-6xl  p-6 sm:p-12 mb-2">
       {/* Left Column - Intro Text */}
       <div className="w-full sm:w-1/3 text-center sm:text-left">
         <h1 className="text-3xl sm:text-4xl font-bold leading-snug">

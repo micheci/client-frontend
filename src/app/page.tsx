@@ -6,6 +6,7 @@ import PropertyGrid from "./components/PropertyGrid";
 import SearchBar from "./components/SearchBar";
 import PropertyDetailModal from "./modals/PropertyDetailModal";
 import { Property } from "./interfaces/Iproperties";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
@@ -45,6 +46,9 @@ export default function Home() {
             onClose={closeModal}
           />
         )}
+
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   );

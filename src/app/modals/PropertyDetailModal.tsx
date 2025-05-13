@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { Property } from "../interfaces/Iproperties";
 import Image from "next/image";
+import RequestTourForm from "../components/RequestTourForm";
 
 interface PropertyDetailModalProps {
   property: Property;
@@ -11,27 +12,29 @@ const PropertyDetailModal = ({
   property,
   onClose,
 }: PropertyDetailModalProps) => {
-  const sections = [
-    { label: "Pricing", id: "pricing" },
-    { label: "About", id: "about" },
-    { label: "Contact", id: "contact" },
-    { label: "Amenities", id: "amenities" },
-    { label: "Fees & Supplies", id: "fees" },
-    { label: "Location", id: "location" },
-  ];
+  const modalRef = useRef<HTMLDivElement>(null);
+  const tourFormRef = useRef<HTMLDivElement>(null);
 
-  const imageRef = useRef<HTMLDivElement | null>(null);
-  const [showStickyMenu, setShowStickyMenu] = useState(false);
-
+  // Close modal when clicking outside
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setShowStickyMenu(!entry.isIntersecting),
-      { threshold: 0, rootMargin: "-60px" }
-    );
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
 
-    if (imageRef.current) observer.observe(imageRef.current);
-    return () => observer.disconnect();
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
+  const scrollToTourForm = () => {
+    tourFormRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const amenitiesList = [
     { label: "Air Conditioning", value: property.airConditioning },
@@ -51,37 +54,12 @@ const PropertyDetailModal = ({
 
   return (
     <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50">
-      <div className="bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-lg p-6 w-[90%] max-w-4xl h-[90%] overflow-y-auto relative text-black scroll-smooth">
-        {/* Close Button */}
-        <button
-          className="absolute top-4 right-4 text-black text-xl hover:text-black"
-          onClick={onClose}
-        >
-          ✕
-        </button>
-
-        {/* Sticky Shortcut Menu */}
-        <div
-          className={`z-10 bg-white/80 backdrop-blur-sm mb-4 p-2 rounded shadow flex flex-wrap gap-2 justify-center sticky top-0 ${
-            !showStickyMenu ? "mt-2" : ""
-          }`}
-        >
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="text-sm text-blue-600 hover:underline font-medium"
-            >
-              {section.label}
-            </a>
-          ))}
-        </div>
-
+      <div
+        ref={modalRef}
+        className="bg-white bg-opacity-90 backdrop-blur-md rounded-lg shadow-lg p-6 w-[90%] max-w-4xl h-[90%] overflow-y-auto relative text-black scroll-smooth"
+      >
         {/* Image Carousel */}
-        <div
-          ref={imageRef}
-          className="overflow-x-auto whitespace-nowrap space-x-2 mb-4 flex"
-        >
+        <div className="overflow-x-auto whitespace-nowrap space-x-2 mb-4 flex">
           {property.images.map((url, index) => (
             <div
               key={index}
@@ -98,31 +76,28 @@ const PropertyDetailModal = ({
           ))}
         </div>
 
-        {/* Title & Address */}
-        <div
-          id="contact"
-          className="mb-4 flex justify-between items-center flex-wrap gap-2"
-        >
+        {/* Title & Button */}
+        <div className="mb-4 flex justify-between items-center flex-wrap gap-2">
           <div>
             <h2 className="text-2xl font-bold text-black">{property.title}</h2>
             <p className="text-gray-600">{property.address}</p>
           </div>
-          <button className="bg-orange-500 hover:bg-orange-300 text-white px-4 py-2 rounded-lg transition cursor-pointer">
-            Request Tour
+          <button
+            onClick={scrollToTourForm}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+          >
+            Request a Tour
           </button>
         </div>
 
         {/* Description */}
-        <div id="about" className="mb-6">
+        <div className="mb-6">
           <h3 className="font-semibold text-lg mb-2">Description</h3>
           <p className="text-sm">{property.description}</p>
         </div>
 
-        {/* Core Info */}
-        <h3 id="pricing" className="font-semibold text-lg mb-2">
-          Pricing & Details
-        </h3>
-
+        {/* Pricing & Details */}
+        <h3 className="font-semibold text-lg mb-2">Pricing & Details</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4 text-sm">
           <p>
             <strong>Price:</strong> ${property.price}
@@ -144,8 +119,8 @@ const PropertyDetailModal = ({
           </p>
         </div>
 
-        {/* Features */}
-        <div id="amenities" className="mb-4">
+        {/* Features & Amenities */}
+        <div className="mb-4">
           <h3 className="font-semibold text-lg mb-2">Features & Amenities</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
             {amenitiesList.map((item, index) => (
@@ -157,9 +132,16 @@ const PropertyDetailModal = ({
           </ul>
         </div>
 
-        <div id="location" className="mb-4">
+        {/* Location Placeholder */}
+        <div className="mb-4">
           <h3 className="font-semibold text-lg mb-2">Location</h3>
           <p className="text-sm text-gray-700">Coming soon...</p>
+        </div>
+
+        {/* Tour Form at Bottom */}
+        <div ref={tourFormRef} className="mt-8">
+          <h3 className="font-semibold text-lg mb-2">Request a Tour</h3>
+          <RequestTourForm />
         </div>
       </div>
     </div>

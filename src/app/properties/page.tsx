@@ -7,6 +7,7 @@ import { useHookstate } from "@hookstate/core";
 import PropertyDetailModal from "../modals/PropertyDetailModal";
 import { Property } from "../interfaces/Iproperties";
 import FilterSection from "../components/FilterSection";
+import Navbar from "../components/Navbar";
 
 const PropertiesPage = () => {
   const propertyState = useHookstate(properties.propertiesState);
@@ -42,7 +43,8 @@ const PropertiesPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-white">
+      <Navbar />
       {/* Content Area */}
       <div className="flex flex-1 lg:flex-row overflow-hidden">
         {/* Left - Map */}
@@ -56,16 +58,15 @@ const PropertiesPage = () => {
         </div>
 
         {/* Right - Filters + Property List */}
-        <div className="lg:w-1/2 flex flex-col h-full">
-          <FilterSection filters={filters} onFilterChange={setFilters} />
-          <div className="flex flex-col flex-1 overflow-hidden">
-            <h1 className="text-2xl font-bold p-4">Property Listings</h1>
-            <div className="flex-1 overflow-y-auto p-4">
-              <PropertyList
-                properties={filteredProperties}
-                onSelectProperty={handleSelectProperty}
-              />
-            </div>
+        <div className="lg:w-1/2 flex flex-col h-full overflow-y-auto">
+          <div className="p-4">
+            <FilterSection filters={filters} onFilterChange={setFilters} />
+          </div>
+          <div className="p-4 pt-0">
+            <PropertyList
+              properties={filteredProperties}
+              onSelectProperty={handleSelectProperty}
+            />
           </div>
         </div>
 

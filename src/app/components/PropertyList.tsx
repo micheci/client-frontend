@@ -9,7 +9,8 @@ interface PropertyListProps {
 
 const PropertyList = ({ properties, onSelectProperty }: PropertyListProps) => {
   return (
-    <div className="grid grid-cols-1 gap-2">
+    <div className="grid grid-cols-1 gap-2 bg-gray-100">
+      <h1 className="text-2xl font-bold mt-4 text-black">Property Listings</h1>{" "}
       {properties.map((property) => (
         <div
           key={property._id}

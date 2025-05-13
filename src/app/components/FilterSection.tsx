@@ -4,7 +4,6 @@ interface FilterProps {
   filters: {
     bedrooms: number;
     bathrooms: number;
-    minPrice: number;
     maxPrice: number;
     location: string;
   };
@@ -13,7 +12,7 @@ interface FilterProps {
 
 const FilterSection: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
   return (
-    <div className="p-4 bg-gray-100 shadow-md space-y-4">
+    <div className="p-4 bg-gray-100 shadow-md space-y-4 text-black">
       <h2 className="text-lg font-semibold">Filters</h2>
 
       {/* Location Input */}
@@ -64,25 +63,10 @@ const FilterSection: React.FC<FilterProps> = ({ filters, onFilterChange }) => {
         </div>
       </div>
 
-      {/* Price Range Slider */}
+      {/* Max Price Slider */}
       <div>
-        <label className="block text-sm font-medium mb-1">Price Range</label>
+        <label className="block text-sm font-medium mb-1">Maximum Price</label>
         <div className="flex items-center space-x-4">
-          <input
-            type="range"
-            min={0}
-            max={20000}
-            step={500}
-            value={filters.minPrice}
-            onChange={(e) =>
-              onFilterChange({
-                ...filters,
-                minPrice: parseInt(e.target.value),
-              })
-            }
-          />
-          <span className="text-sm">${filters.minPrice}</span>
-
           <input
             type="range"
             min={0}

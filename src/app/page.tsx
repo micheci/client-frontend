@@ -30,11 +30,11 @@ export default function Home() {
         <Navbar />
 
         {/* Padded section only for Hero and SearchBar */}
-        <div className="px-4 sm:px-8 lg:px-12 py-6 bg-gray-700 shadow-md rounded-xl max-w-7xl mx-auto my-4">
+        <div className="px-4 sm:px-8 lg:px-12  bg-gray-700 shadow-md rounded-xl max-w-7xl mx-auto ">
           <Hero />
-          <div className="relative mt-4">
+          {/* <div className="relative mt-4">
             <SearchBar />
-          </div>
+          </div> */}
         </div>
 
         {/* Full-width section below */}
